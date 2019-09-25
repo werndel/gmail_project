@@ -12,6 +12,7 @@ def setup(request):
     driver = webdriver.Firefox(executable_path=firefox_driver_path)
     request.cls.driver = driver
     before_failed = request.session.testsfailed  # check how many tests failed
+
     yield
     if request.session.testsfailed != before_failed:  # check if the number of failed tests is the same as before the
         # test method
