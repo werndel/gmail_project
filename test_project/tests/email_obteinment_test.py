@@ -1,31 +1,34 @@
 import pytest
 from test_project.pages.email_obteinment import EmailObtainment
-from test_project.pages.lorem_ipsum import LoremIpsum
 from test_project.pages.log_in import GmailLogIn
 from test_project.pages.send_email import GmailSendMail
+import lorem
 
 
 @pytest.mark.usefixtures("setup")
 class TestEmailObtainment:
 
     def test_email_obtainment_passed(self):
-        login = 'pasekpasek61@gmail.com'
-        password = 'correctpassword'
+        login = 'werndel11@gmail.com'
+        password = 'werndel11werndel'
 
-        login2 = 'werndel11@gmail.com'
-        password2 = 'correctpassword'
-
-        recipient = login2
-        title = LoremIpsum(driver=self.driver).generate_lorem_ipsum(3)
-        content = "Test"
+        login2 = 'pasekpasek61@gmail.com'
+        password2 = 'Pasek61pasek'
 
         log_in_page = GmailLogIn(driver=self.driver)
         wait = log_in_page.wait
         logger = log_in_page.logger
+
+        recipient = login2
+        title = lorem.sentence()
+        # title = "loremipsum.get_sentence()"
+        content = lorem.sentence()
+        # content = "loremipsum.get_sentence()"
+
         email_obtainment_page = EmailObtainment(driver=self.driver, wait=wait, logger=logger)
         send_mail_page = GmailSendMail(wait, logger)
 
-        # log in to first account and send email
+        # log in to first account and send email`
         log_in_page.open_main_page()
         log_in_page.input_login(login)
         log_in_page.input_password(password)
