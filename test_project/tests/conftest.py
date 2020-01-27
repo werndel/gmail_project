@@ -1,9 +1,7 @@
 import pytest
 # import allure
 # from allure_commons.types import AttachmentType
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium import webdriver
-# from selenium.webdriver.chrome.options import Options
 import settings
 
 
