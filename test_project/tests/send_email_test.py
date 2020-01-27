@@ -1,20 +1,18 @@
 import pytest
-
-from test_project.pages.lorem_ipsum import LoremIpsum
 from test_project.pages.log_in import GmailLogIn
 from test_project.pages.send_email import GmailSendMail
+import loremipsum
 
 
 @pytest.mark.usefixtures("setup")
 class TestSendEmail:
-
     def test_sending_email_passed(self):
         login = 'pasekpasek61@gmail.com'
-        password = 'correctpassword'
+        password = 'Pasek61pasek'
 
         recipient = "pasekpasek61@gmail.com"
-        title = LoremIpsum(driver=self.driver).generate_lorem_ipsum(3)
-        content = "TEST"
+        title = loremipsum.get_sentence()
+        content = loremipsum.get_sentence()
 
         log_in_page = GmailLogIn(driver=self.driver)
         wait = log_in_page.wait
@@ -30,11 +28,11 @@ class TestSendEmail:
 
     def test_sending_email_no_recepient(self):
         login = 'pasekpasek61@gmail.com'
-        password = 'correctpassword'
+        password = 'Pasek61pasek'
 
         recipient = ""
-        title = LoremIpsum(driver=self.driver).generate_lorem_ipsum(3)
-        content = "alin1234"
+        title = loremipsum.get_sentence()
+        content = loremipsum.get_sentence()
 
         log_in_page = GmailLogIn(driver=self.driver)
         wait = log_in_page.wait
@@ -50,12 +48,11 @@ class TestSendEmail:
 
     def test_sending_email_wrong_recepient(self):
         login = 'pasekpasek61@gmail.com'
-        password = 'correctpassword'
+        password = 'Pasek61pasek'
 
         recipient = "lama@"
-        title = LoremIpsum(driver=self.driver).generate_lorem_ipsum(3)
-        content = "alin1234"
-
+        title = loremipsum.get_sentence()
+        content = loremipsum.get_sentence()
         log_in_page = GmailLogIn(driver=self.driver)
         wait = log_in_page.wait
         logger = log_in_page.logger
@@ -67,5 +64,3 @@ class TestSendEmail:
         send_mail_page.send_mail(recipient, title, content)
 
         assert send_mail_page.get_error_wrong_recepient()
-
-
