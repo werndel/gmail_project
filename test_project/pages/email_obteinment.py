@@ -53,9 +53,11 @@ class EmailObtainment:
                 wait = WebDriverWait(self.driver, timeout=60, poll_frequency=0.5)
                 wait.until(EC.visibility_of_element_located((By.XPATH, alert_new_mail_xpath)))
             except selenium.common.exceptions.TimeoutException as e:
-                self.driver.refresh()
                 if i - 1 == retries:
                     raise e
+                else:
+                    i += 1
+                    self.driver.refresh()
 
         # download titles, senders and text of last 50 mails in the first page of gmail
         # if an incorrect element(which can not be changed to a text element) appears in the list_emails_titles,
@@ -77,7 +79,6 @@ class EmailObtainment:
             except selenium.common.exceptions.StaleElementReferenceException as e:
                 if i - 1 == retries:
                     raise e
-
             else:
                 i += 1
 
