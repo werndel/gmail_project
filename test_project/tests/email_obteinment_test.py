@@ -9,11 +9,11 @@ import lorem
 class TestEmailObtainment:
 
     def test_email_obtainment_passed(self):
-        login = 'werndel11@gmail.com'
-        password = 'werndel11werndel'
+        login = 'emailfortesting2002@gmail.com'
+        password = 'CorrectPassword2'
 
-        login2 = 'pasekpasek61@gmail.com'
-        password2 = 'Pasek61pasek'
+        login2 = 'emailfortesting2001@gmail.com'
+        password2 = 'CorrectPassword1'
 
         log_in_page = GmailLogIn(driver=self.driver)
         wait = log_in_page.wait
@@ -21,9 +21,7 @@ class TestEmailObtainment:
 
         recipient = login2
         title = lorem.sentence()
-        # title = "loremipsum.get_sentence()"
         content = lorem.sentence()
-        # content = "loremipsum.get_sentence()"
 
         email_obtainment_page = EmailObtainment(driver=self.driver, wait=wait, logger=logger)
         send_mail_page = GmailSendMail(wait, logger)

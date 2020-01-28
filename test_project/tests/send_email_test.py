@@ -7,10 +7,10 @@ import loremipsum
 @pytest.mark.usefixtures("setup")
 class TestSendEmail:
     def test_sending_email_passed(self):
-        login = 'pasekpasek61@gmail.com'
-        password = 'Pasek61pasek'
+        login = 'emailfortesting2001@gmail.com'
+        password = 'CorrectPassword1'
 
-        recipient = "pasekpasek61@gmail.com"
+        recipient = "emailfortesting2002@gmail.com"
         title = loremipsum.get_sentence()
         content = loremipsum.get_sentence()
 
@@ -27,8 +27,8 @@ class TestSendEmail:
         assert send_mail_page.get_allert_email_sent()
 
     def test_sending_email_no_recepient(self):
-        login = 'pasekpasek61@gmail.com'
-        password = 'Pasek61pasek'
+        login = 'emailfortesting2001@gmail.com'
+        password = 'CorrectPassword1'
 
         recipient = ""
         title = loremipsum.get_sentence()
@@ -47,8 +47,8 @@ class TestSendEmail:
         assert send_mail_page.get_error_no_recepient()
 
     def test_sending_email_wrong_recepient(self):
-        login = 'pasekpasek61@gmail.com'
-        password = 'Pasek61pasek'
+        login = 'emailfortesting2001@gmail.com'
+        password = 'CorrectPassword1'
 
         recipient = "lama@"
         title = loremipsum.get_sentence()
