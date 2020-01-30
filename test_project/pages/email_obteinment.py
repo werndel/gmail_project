@@ -50,10 +50,10 @@ class EmailObtainment:
         for i in range(retries):
             try:
                 # waiting for an email with the alert "New"
-                wait = WebDriverWait(self.driver, timeout=60, poll_frequency=0.5)
+                wait = WebDriverWait(self.driver, timeout=10, poll_frequency=0.5)
                 wait.until(EC.visibility_of_element_located((By.XPATH, alert_new_mail_xpath)))
             except selenium.common.exceptions.TimeoutException as e:
-                if i - 1 == retries:
+                if i + 1 == retries:
                     raise e
                 else:
                     i += 1
@@ -77,10 +77,10 @@ class EmailObtainment:
                 list_email_contents = [content.text for content in list_email_contents]
 
             except selenium.common.exceptions.StaleElementReferenceException as e:
-                if i - 1 == retries:
+                if i + 1 == retries:
                     raise e
-            else:
-                i += 1
+                else:
+                    i += 1
 
         for i in range(0, len(list_emails_titles)):
 
