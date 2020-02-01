@@ -1,7 +1,7 @@
 import pytest
 from test_project.pages.log_in import GmailLogIn
 from test_project.pages.send_email import GmailSendMail
-import loremipsum
+import lorem
 
 
 @pytest.mark.usefixtures("setup")
@@ -11,8 +11,8 @@ class TestSendEmail:
         password = 'CorrectPassword1'
 
         recipient = "emailfortesting2002@gmail.com"
-        title = loremipsum.get_sentence()
-        content = loremipsum.get_sentence()
+        title = lorem.sentence()
+        content = lorem.sentence()
 
         log_in_page = GmailLogIn(driver=self.driver)
         wait = log_in_page.wait
@@ -31,8 +31,8 @@ class TestSendEmail:
         password = 'CorrectPassword1'
 
         recipient = ""
-        title = loremipsum.get_sentence()
-        content = loremipsum.get_sentence()
+        title = lorem.sentence()
+        content = lorem.sentence()
 
         log_in_page = GmailLogIn(driver=self.driver)
         wait = log_in_page.wait
@@ -51,8 +51,8 @@ class TestSendEmail:
         password = 'CorrectPassword1'
 
         recipient = "lama@"
-        title = loremipsum.get_sentence()
-        content = loremipsum.get_sentence()
+        title = lorem.sentence()
+        content = lorem.sentence()
         log_in_page = GmailLogIn(driver=self.driver)
         wait = log_in_page.wait
         logger = log_in_page.logger
