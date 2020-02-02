@@ -5,7 +5,6 @@
 > Test project for learning test automation with Selenium WebDriver and Python - a variation of test cases related to some function of Gmail service. 
 
 
-
 ## Recommends
 #### Python
 - Python 3.7+
