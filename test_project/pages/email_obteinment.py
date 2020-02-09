@@ -56,8 +56,9 @@ class EmailObtainment:
                 if i + 1 == retries:
                     raise e
                 else:
-                    i += 1
                     self.driver.refresh()
+            else:
+                break
 
         # download titles, senders and text of last 50 mails in the first page of gmail
         # if an incorrect element(which can not be changed to a text element) appears in the list_emails_titles,
@@ -66,7 +67,6 @@ class EmailObtainment:
 
         for i in range(retries):
             try:
-                # self.driver.refresh()
                 list_emails_titles = self.wait.until(
                     EC.visibility_of_all_elements_located((By.CLASS_NAME, title_class_name)))
                 list_emails_titles = [title.text for title in list_emails_titles]
@@ -79,8 +79,8 @@ class EmailObtainment:
             except selenium.common.exceptions.StaleElementReferenceException as e:
                 if i + 1 == retries:
                     raise e
-                else:
-                    i += 1
+            else:
+                break
 
         for i in range(0, len(list_emails_titles)):
 
@@ -96,3 +96,4 @@ class EmailObtainment:
                 break  # ends if it finds a search email
             else:
                 i += 1
+
