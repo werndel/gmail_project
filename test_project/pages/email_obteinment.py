@@ -91,9 +91,7 @@ class EmailObtainment:
 
             # checks if the data of any of the emails agree with the e-mail sent earlier
             if title == title_to_check and sender == sender_to_check and content[4:] == content_to_check:
-
                 return sender_to_check
                 break  # ends if it finds a search email
-            else:
-                i += 1
+
 
